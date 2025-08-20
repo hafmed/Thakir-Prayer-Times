@@ -54,12 +54,15 @@
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/hafmed/Thakir-Prayer-Times/refs/heads/main/Screenshot/Screenshot_1.jpg</image>
+            <caption>Prayer times for City</caption>
         </screenshot>
         <screenshot>
             <image>https://raw.githubusercontent.com/hafmed/Thakir-Prayer-Times/refs/heads/main/Screenshot/Screenshot_2.jpg</image>
+            <caption>Page of settings and configuration of all options (cities, Methods of calculation, ....)</caption>
         </screenshot>
         <screenshot>
             <image>https://raw.githubusercontent.com/hafmed/Thakir-Prayer-Times/refs/heads/main/Screenshot/Screenshot_3.jpg</image>
+            <caption>Users can select different Adhan (call to prayer) sounds and reminder settings for all prayer time</caption>
         </screenshot>
     </screenshots>
 </component>
