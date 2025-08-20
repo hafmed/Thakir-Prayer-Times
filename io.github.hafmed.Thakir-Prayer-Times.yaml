@@ -16,7 +16,7 @@
         buildsystem: cmake-ninja
         sources:
           - type: archive
-            url: https://github.com/hafmed/Desktop_Thakir_Prayer_Times_Algeria/archive/refs/tags/v2.0.5release2.tar.gz
+            url: https://github.com/hafmed/Thakir_Prayer_Times_Algeria/archive/refs/tags/v2.0.5release2.tar.gz
             sha256: d5c34bf948e1ecfb155ddd26c8bf354f75ff3a7ec832f4c3204aade0d5ff887a
         post-install:
         - install -Dm644 io.github.hafmed.Thakir-Prayer-Times.metainfo.xml /app/share/metainfo/io.github.hafmed.Thakir-Prayer-Times.metainfo.xml
