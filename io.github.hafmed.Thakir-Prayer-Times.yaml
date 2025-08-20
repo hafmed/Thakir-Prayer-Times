@@ -1,4 +1,3 @@
-    # Example Flatpak manifest for a simple Qt application
     app-id: io.github.hafmed.Thakir-Prayer-Times
     runtime: org.kde.Platform
     runtime-version: "6.9"
