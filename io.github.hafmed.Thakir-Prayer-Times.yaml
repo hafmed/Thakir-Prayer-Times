@@ -17,7 +17,7 @@
         sources:
           - type: archive
             url: https://github.com/hafmed/Thakir-Prayer-Times/archive/refs/tags/v2.0.5release2.tar.gz
-            sha256: 352178d74483a0ed4b4fd48b62a08db7350660acc01360d7c2c91551f6f093bc
+            sha256: 5f908862fde6023c6e1f39e833414f163ea2d052ec56cd0dafacb63e3d6a80e2
         post-install:
         - install -Dm644 io.github.hafmed.Thakir-Prayer-Times.metainfo.xml /app/share/metainfo/io.github.hafmed.Thakir-Prayer-Times.metainfo.xml
         - install -Dm644 io.github.hafmed.Thakir-Prayer-Times.desktop /app/share/applications/io.github.hafmed.Thakir-Prayer-Times.desktop
