@@ -1,7 +1,7 @@
     # Example Flatpak manifest for a simple Qt application
     app-id: io.github.hafmed.Thakir-Prayer-Times
     runtime: org.kde.Platform
-    runtime-version: "6.9" # Or the appropriate Qt version
+    runtime-version: "6.9"
     sdk: org.kde.Sdk
     command: thakir_prayer_times
     finish-args:
@@ -10,18 +10,14 @@
         - --socket=wayland
         - --device=dri
         - --socket=pulseaudio
+        - --talk-name=org.freedesktop.Notifications
+        - --talk-name=org.kde.StatusNotifierWatcher
     modules:
       - name: thakir_prayer_times
-        buildsystem: cmake-ninja # Or cmake, meson, etc. depending on your build system
+        buildsystem: cmake-ninja
         sources:
            - type: dir
-             path: /home/hafmed/Documents/25-26/Desktop_thakir_prayer_times/ # Path #to your application source code
-         #  - type: git
-        #     url: https://github.com/hafmed/Desktop_Thakir_Prayer_Times_Algeria.git # Git  #       repository source
-          #   tag: v2.0.5
-         # - type: archive
-          #  url: https://github.com/hafmed/Desktop_Thakir_Prayer_Times_Algeria/archive/refs/tags/v1.6.9.tar.gz # Git repository source
-          #  sha256: 3692dc5860db69eaab7714d05069f9f9b91501136faabade2af256fc26d51c71
+             path: /home/hafmed/Documents/GitHub/Desktop_Thakir_Prayer_Times_Algeria/
         post-install:
         - install -Dm644 io.github.hafmed.Thakir-Prayer-Times.metainfo.xml /app/share/metainfo/io.github.hafmed.Thakir-Prayer-Times.metainfo.xml
         - install -Dm644 io.github.hafmed.Thakir-Prayer-Times.desktop /app/share/applications/io.github.hafmed.Thakir-Prayer-Times.desktop

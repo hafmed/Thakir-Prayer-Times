@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-    <id>io.github.hafmed.Thakir_Prayer_Times</id>
+    <id>io.github.hafmed.Thakir-Prayer-Times</id>
     <name>Thakir Prayer Times</name>
     <summary>A desktop application to calculate prayer times for Algeria cities;</summary>
     <url type="homepage">https://sites.google.com/site/courshaf/</url>
@@ -53,13 +53,13 @@
     </update_contact>
     <screenshots>
         <screenshot type="default">
-            <image>https://raw.githubusercontent.com/hafmed/Basic-Numerical-Methods-qml/main/screenshots/Screenshot_1.png</image>
+            <image>https://raw.githubusercontent.com/hafmed/Desktop_Thakir_Prayer_Times_Algeria/refs/heads/main/Screenshot/Screenshot_1.jpg</image>
         </screenshot>
         <screenshot>
-            <image>https://raw.githubusercontent.com/hafmed/Basic-Numerical-Methods-qml/main/screenshots/Screenshot_2.png</image>
+            <image>https://raw.githubusercontent.com/hafmed/Desktop_Thakir_Prayer_Times_Algeria/refs/heads/main/Screenshot/Screenshot_2.jpg</image>
         </screenshot>
         <screenshot>
-            <image>https://raw.githubusercontent.com/hafmed/Basic-Numerical-Methods-qml/main/screenshots/Screenshot_3.png</image>
+            <image>https://raw.githubusercontent.com/hafmed/Desktop_Thakir_Prayer_Times_Algeria/refs/heads/main/Screenshot/Screenshot_3.jpg</image>
         </screenshot>
     </screenshots>
 </component>
