@@ -39,6 +39,18 @@ thakir_prayer_times::thakir_prayer_times(QWidget *parent)
 {
     setupUi(this);
 
+    QString path ;
+    QString filename;
+
+    path = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) ;
+    filename = "config.ini" ;
+    ///QSettings HAF_settings(path + "/"+ filename,QSettings::IniFormat) ;
+    // QSettings HAF_settings("/sdcard/settings.ini", QSettings::NativeFormat); //can be IniFormat, no difference
+
+    //HAF_settings= new QSettings("/sdcard/settings.ini", QSettings::IniFormat); //can be IniFormat, no difference
+
+    HAF_settings = new QSettings(path + "/"+ filename,QSettings::IniFormat);
+
     label_10->setVisible(false);
     label_12->setVisible(false);
     label_13->setVisible(false);
@@ -1137,17 +1149,6 @@ void thakir_prayer_times::radioButton_sitting_HAF_setNotChecked()
 
 void thakir_prayer_times::thakir_prayer_times_config()
 {
-//    QString path ;
-//    QString filename;
-
-//    path = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) ;
-//    filename = "config.ini" ;
-   // QSettings HAF_settings(path + "/"+ filename,QSettings::IniFormat) ;
-   // QSettings HAF_settings("/sdcard/settings.ini", QSettings::NativeFormat); //can be IniFormat, no difference
-
-    HAF_settings= new QSettings("/sdcard/settings.ini", QSettings::IniFormat); //can be IniFormat, no difference
-
-    //HAF_settings = new QSettings(path + "/"+ filename,QSettings::IniFormat);
     m_name_city_DZ=QString::fromUtf8("سعيدة");
     m_latitude_DZ = +34.8304;
     m_longitude_DZ = +0.1518;

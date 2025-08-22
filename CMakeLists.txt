@@ -16,8 +16,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 configure_file(version.h.in version.h)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Multimedia)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Multimedia)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Core Multimedia)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Core Multimedia)
 
 
 qt_standard_project_setup(REQUIRES 6.5)
@@ -67,7 +67,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(thakir_prayer_times PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Multimedia)
+target_link_libraries(thakir_prayer_times PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Core Qt6::Multimedia)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

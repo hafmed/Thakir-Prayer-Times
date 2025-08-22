@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     dialog->setWindowIcon(QIcon(pixmap));
     app.setApplicationName("ذكر لأوقات الصلاة");
     app.setOrganizationName("hafsoftdz");
-    app.setOrganizationDomain("hafsoftdz.net");
+    app.setOrganizationDomain("org.hafsoftdz");
     dialog->show();
     return app.exec();
 
