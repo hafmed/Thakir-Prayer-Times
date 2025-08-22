@@ -94,5 +94,15 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(thakir_prayer_times)
 endif()
 
+# install(FILES ${PROJECT_SOURCE_DIR}/io.github.hafmed.Thakir-Prayer-Times.metainfo.xml DESTINATION $ENV{HOME}/.local/app/share/metainfo/io.github.hafmed.Thakir-Prayer-Times.metainfo.xml)
 
-install(FILES ${PROJECT_SOURCE_DIR}/io.github.hafmed.Thakir-Prayer-Times.metainfo.xml DESTINATION $ENV{HOME}/.local/app/share/metainfo/io.github.hafmed.Thakir-Prayer-Times.metainfo.xml)
+install(FILES "${PROJECT_SOURCE_DIR}/io.github.hafmed.Thakir-Prayer-Times.metainfo.xml"
+        DESTINATION "$ENV{HOME}/.local/app/share/metainfo")
+install(FILES "${PROJECT_SOURCE_DIR}/io.github.hafmed.Thakir-Prayer-Times.desktop"
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
+install(FILES "${PROJECT_SOURCE_DIR}/io.github.hafmed.Thakir-Prayer-Times.metainfo.xml"
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/metainfo")
+install(FILES "${PROJECT_SOURCE_DIR}/io.github.hafmed.Thakir-Prayer-Times.png"
+        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/256x256/apps")
+
+        
