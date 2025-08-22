@@ -3,7 +3,6 @@
     <id>io.github.hafmed.Thakir-Prayer-Times</id>
     <name>Thakir Prayer Times</name>
     <summary>A desktop application to calculate prayer times for Algeria cities;</summary>
-    <url type="homepage">https://sites.google.com/site/courshaf/</url>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0-or-later</project_license>
     <supports>
@@ -16,21 +15,25 @@
         <category>Utility</category>
     </categories>
     <keywords>
-        <keyword>Prayer times</keyword>
-        <keyword>iclamic</keyword>
+        <keyword>Prayer</keyword>
+        <keyword>Iclamic</keyword>
+        <keyword>Arabic</keyword>
+        <keyword>Algeria</keyword>
+        <keyword>times</keyword>
+        <keyword>Qt</keyword>
+        <keyword>c++</keyword>
     </keywords>
     <description>
         <p>
-            Thakir Prayer Times is a desktop application to calculate prayer times for algeria cities:
+            Thakir Prayer Times is a desktop application to calculate prayer times for Algeria cities:
         </p>
         <ul>
             <li>Accurate Prayer time calculator based on your current location;</li>
-            <li>Hijri date;</li>
             <li>With Azan/Adhan: visual and audio notifications/calls for prayer;</li>
-            <li>Quibla direction from the sun and magnetic north;</li>
+            <li>Quibla direction;</li>
             <li>Enable/Disable Alert before Adhan;</li>
-            <li>Enable/Disable Silent mode after Adhan (during Prayer);</li>
-            <li>-Arabic GUI.</li>
+            <li>Arabic GUI;</li>
+            <li>...</li>
         </ul>
     </description>
     <launchable type="desktop-id">io.github.hafmed.Thakir-Prayer-Times.desktop</launchable>
@@ -38,7 +41,7 @@
         <release version="2.0.5" date="2025-08-25">
             <url type="details">https://sites.google.com/site/courshaf/</url>
             <description>
-                <p>Initial Release</p>
+                <p>First release on Flathub</p>
                 <ul>
                     <li>Minor bug fixes</li>
                 </ul>
@@ -51,6 +54,8 @@
     </developer>
     <update_contact>thakir.dz@gmail.com
     </update_contact>
+    <url type="homepage">https://sites.google.com/site/courshaf/</url>
+    <url type="bugtracker">https://github.com/hafmed/Thakir-Prayer-Times/issues</url>
     <screenshots>
         <screenshot type="default">
             <image>https://raw.githubusercontent.com/hafmed/Thakir-Prayer-Times/refs/heads/main/Screenshot/Screenshot_1.png</image>
