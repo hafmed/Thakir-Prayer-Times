@@ -16,7 +16,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 configure_file(version.h.in version.h)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Core Multimedia)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Core Multimedia DBus)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Core Multimedia)
 
 
@@ -48,6 +48,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         io.github.hafmed.Thakir-Prayer-Times.png io.github.hafmed.Thakir-Prayer-Times.svg
         io.github.hafmed.Thakir-Prayer-Times
         io.github.hafmed.Thakir-Prayer-Times.yaml
+        engine.cpp engine.h
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET thakir_prayer_times APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -67,7 +68,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(thakir_prayer_times PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Core Qt6::Multimedia)
+target_link_libraries(thakir_prayer_times PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt6::Core Qt6::Multimedia Qt6::DBus)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

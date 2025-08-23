@@ -85,6 +85,8 @@ private slots:
 
     void showQMessageBox(QMediaPlayer::MediaStatus status);
 
+    void on_tabWidget_Athan_currentChanged(int index);
+
 private:
     QAction *actTexte1;
     QAction *actTexte2;

@@ -33,11 +33,28 @@
 #include <iostream>
 using namespace std;
 
+#include "engine.h"
+#include <QDBusInterface>
+
 thakir_prayer_times::thakir_prayer_times(QWidget *parent)
     : QMainWindow(parent),
       athan(nullptr)
 {
     setupUi(this);
+
+    QDBusInterface portal("org.freedesktop.portal.Desktop",
+                          "/org/freedesktop/portal/desktop",
+                          "org.freedesktop.portal.Background");
+
+    QList<QString> commandline = {"thakir_prayer_times", "--hidden"};
+
+    QHash<QString, QVariant> params;
+    params.insert("reason", "Background Athan.");
+    params.insert("autostart", true);
+    params.insert("commandline", QVariant(commandline));
+
+    portal.call("RequestBackground", "", params);
+
 
     QString path ;
     QString filename;
@@ -1966,3 +1983,11 @@ void thakir_prayer_times::showQMessageBox(QMediaPlayer::MediaStatus MediaStatus)
     }
 
 }
+
+
+/////-HAF 25-08-2025  v2.0.5 flatpak for flathub.org
+void thakir_prayer_times::on_tabWidget_Athan_currentChanged(int index)
+{
+    readSettings();
+}
+
