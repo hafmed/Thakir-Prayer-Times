@@ -8,3 +8,7 @@ Icon=io.github.hafmed.Thakir-Prayer-Times
 Exec=thakir_prayer_times
 Terminal=false
 Keywords=prayer;times;islamic;arabe;
+
+Name[ar]=ذكر لاوقات الصلاة
+Comment[ar]=برنامج اذان بسيط
+
