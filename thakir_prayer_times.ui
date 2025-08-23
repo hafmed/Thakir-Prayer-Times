@@ -194,7 +194,7 @@
              <x>0</x>
              <y>0</y>
              <width>217</width>
-             <height>404</height>
+             <height>368</height>
             </rect>
            </property>
            <attribute name="label">
@@ -202,13 +202,16 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_6">
             <item>
-             <widget class="QGroupBox" name="radioButton_sitting_HAF">
-              <property name="title">
+             <widget class="QRadioButton" name="radioButton_sitting_HAF">
+              <property name="text">
                <string>ضبط مسبق</string>
               </property>
-              <property name="checkable">
+              <property name="checked">
                <bool>true</bool>
               </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
              </widget>
             </item>
             <item>
@@ -232,16 +235,13 @@
              <widget class="QComboBox" name="comboBox_madina_comune"/>
             </item>
             <item>
-             <widget class="QGroupBox" name="radioButton_sitting_user">
-              <property name="title">
+             <widget class="QRadioButton" name="radioButton_sitting_user">
+              <property name="text">
                <string>ضبط شخصي</string>
               </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-              <property name="checked">
-               <bool>false</bool>
-              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
              </widget>
             </item>
             <item>
@@ -325,8 +325,6 @@
              </widget>
             </item>
            </layout>
-           <zorder>radioButton_sitting_user</zorder>
-           <zorder>radioButton_sitting_HAF</zorder>
            <zorder>lineEdit_degreeLat</zorder>
            <zorder>label_16</zorder>
            <zorder>lineEdit_seaLevel</zorder>
@@ -339,11 +337,13 @@
            <zorder>label_15</zorder>
            <zorder>label_17</zorder>
            <zorder>label_20</zorder>
+           <zorder>radioButton_sitting_HAF</zorder>
+           <zorder>radioButton_sitting_user</zorder>
           </widget>
           <widget class="QWidget" name="page_2">
            <property name="geometry">
             <rect>
-             <x>-236</x>
+             <x>-117</x>
              <y>0</y>
              <width>334</width>
              <height>227</height>
@@ -1265,4 +1265,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <include location="qtresource.qrc"/>
  </resources>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>
