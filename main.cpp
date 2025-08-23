@@ -28,12 +28,20 @@
 
 #include "thakir_prayer_times.h"
 
+#include "engine.h"
+
 int main(int argc, char *argv[])
 {
-    #if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
-      QApplication::setGraphicsSystem("raster");
-    #endif
     QApplication app(argc, argv);
+
+    Engine engine;
+
+    if(argc > 1 && strcmp(argv[1], "--hidden") == 0)
+    {
+        engine.autostart_hidden(true);
+
+    }
+
     thakir_prayer_times *dialog = new thakir_prayer_times;
     QPixmap pixmap = QPixmap (":/icons/io.github.hafmed.Thakir-Prayer-Times.ico");
     dialog->setWindowIcon(QIcon(pixmap));
