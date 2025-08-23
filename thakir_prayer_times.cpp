@@ -1989,5 +1989,8 @@ void thakir_prayer_times::showQMessageBox(QMediaPlayer::MediaStatus MediaStatus)
 void thakir_prayer_times::on_tabWidget_Athan_currentChanged(int index)
 {
     readSettings();
+    readDataFromUI();
+    writeSettings();
 }
+
 
