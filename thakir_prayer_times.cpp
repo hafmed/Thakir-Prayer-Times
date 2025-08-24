@@ -42,6 +42,43 @@ thakir_prayer_times::thakir_prayer_times(QWidget *parent)
 {
     setupUi(this);
 
+
+    // Connect to the session bus
+    QDBusConnection bus = QDBusConnection::sessionBus();
+
+    if (!bus.isConnected()) {
+        qWarning() << "Cannot connect to D-Bus session bus";
+        return;
+    }
+
+    // Create interface for the notification portal
+    m_portalInterface = new QDBusInterface(
+        "org.freedesktop.portal.Desktop",
+        "/org/freedesktop/portal/desktop",
+        "org.freedesktop.portal.Notification",
+        bus,
+        this
+        );
+
+    if (!m_portalInterface->isValid()) {
+        qWarning() << "D-Bus interface is not valid:" << m_portalInterface->lastError().message();
+        delete m_portalInterface;
+        m_portalInterface = nullptr;
+        return;
+    }
+
+    // Connect to the ActionInvoked signal
+    bus.connect("org.freedesktop.portal.Desktop",
+                "/org/freedesktop/portal/desktop",
+                "org.freedesktop.portal.Notification",
+                "ActionInvoked",
+                this,
+                SLOT(onNotificationResponse(uint, uint, QVariantMap)));
+
+
+
+    ///--------------//
+
     QDBusInterface portal("org.freedesktop.portal.Desktop",
                           "/org/freedesktop/portal/desktop",
                           "org.freedesktop.portal.Background");
@@ -1082,12 +1119,23 @@ void thakir_prayer_times::thakir_prayer_times_Calculer()
         int tempsAlerteAvant=spinBox_Temps_Alerte_Avant->value();
         if (minutes==tempsAlerteAvant && hours==0)
         {
+            #ifdef Q_OS_WIN
             // if(minutes+1!=0){
             sticon->showMessage(QString::fromUtf8("إنتبه من فضلك"),QString::fromUtf8("تبقى لصلاة %1 اقل من %2 دقيقة")
                                 .arg(next_prayer_text)
                                 .arg(minutes),QSystemTrayIcon::Warning,10000); // On affiche une infobulle
             // }
             alerteisdone=true;
+            #elif defined(Q_OS_LINUX)
+            ///---------------HAF FOR FLATPAK 25-8-2025-----//
+            sendNotification(
+                QString::fromUtf8("إنتبه من فضلك"),QString::fromUtf8("تبقى لصلاة %1 اقل من %2 دقيقة")
+                    .arg(next_prayer_text)
+                    .arg(minutes),"dialog-information"
+                );
+            alerteisdone=true;
+            #endif
+            /// --------------------------------------------//
         }
     }
     QTime TempsRestanthour2 = timeEdit_pour_attendre_nextsalat->time();
@@ -1878,6 +1926,7 @@ void thakir_prayer_times::about()
     actTexte1->setEnabled(true);
     // hide();
     // grabKb();
+
 }
 
 void thakir_prayer_times::aboutbis()
@@ -1992,5 +2041,94 @@ void thakir_prayer_times::on_tabWidget_Athan_currentChanged(int index)
     readDataFromUI();
     writeSettings();
 }
+void thakir_prayer_times::sendNotification(const QString &title,
+                                          const QString &body,
+                                          const QString &icon)
+{
+    if (!m_portalInterface) {
+        emit notificationSent(false, "D-Bus interface not available");
+        return;
+    }
 
+    QVariantMap options;
+    options["title"] = title;
+    options["body"] = body;
+
+    if (!icon.isEmpty()) {
+        options["icon"] = icon;
+    }
+
+    options["priority"] = "normal";
+
+    QDBusMessage message = m_portalInterface->call(
+        "AddNotification",
+        "qt-app-notification",  // unique ID for this notification group
+        options
+        );
+
+    if (message.type() == QDBusMessage::ErrorMessage) {
+        emit notificationSent(false, message.errorMessage());
+    } else {
+        emit notificationSent(true);
+    }
+}
+
+void thakir_prayer_times::sendNotificationWithActions(const QString &title,
+                                                     const QString &body,
+                                                     const QVariantMap &actions,
+                                                     const QString &icon)
+{
+    if (!m_portalInterface) {
+        emit notificationSent(false, "D-Bus interface not available");
+        return;
+    }
+
+    QVariantMap options;
+    options["title"] = title;
+    options["body"] = body;
+
+    if (!icon.isEmpty()) {
+        options["icon"] = icon;
+    }
+
+    options["priority"] = "normal";
+    options["default-action"] = "default";
+    options["buttons"] = QVariant::fromValue(actions);
+
+    QDBusPendingCall call = m_portalInterface->asyncCall(
+        "AddNotification",
+        "qt-app-notification",
+        options
+        );
+
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(call, this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher]() {
+        watcher->deleteLater();
+        QDBusPendingReply<uint> reply = *watcher;
+        if (reply.isError()) {
+            emit notificationSent(false, reply.error().message());
+        } else {
+            m_lastNotificationId = reply.value();
+            emit notificationSent(true);
+        }
+    });
+}
+
+void thakir_prayer_times::onNotificationResponse(uint id, uint response, const QVariantMap &results)
+{
+    Q_UNUSED(results);
+
+    if (id == m_lastNotificationId) {
+        // Handle the response (button click)
+        QString actionId;
+        switch (response) {
+        case 0: actionId = "default"; break;
+        case 1: actionId = "action1"; break;
+        case 2: actionId = "action2"; break;
+        default: actionId = QString::number(response);
+        }
+
+        emit actionInvoked(actionId);
+    }
+}
 

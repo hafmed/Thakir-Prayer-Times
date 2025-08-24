@@ -17,6 +17,14 @@
 
 #include <QSystemTrayIcon>
 
+#include <QDBusInterface>
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
+#include <QVariantMap>
+#include <QString>
+
 class thakir_prayer_times : public QMainWindow, public Ui::thakir_prayer_times
 {
     Q_OBJECT
@@ -58,10 +66,19 @@ public:
     bool AppisVisble=true;
     bool athanwasplayed=false;
 
+    Q_INVOKABLE void sendNotification(const QString &title,
+                                      const QString &body,
+                                      const QString &icon = "");
+    Q_INVOKABLE void sendNotificationWithActions(const QString &title,
+                                                 const QString &body,
+                                                 const QVariantMap &actions,
+                                                 const QString &icon = "");
+
 public slots:
     void stopAthan();
 
 private slots:
+    void onNotificationResponse(uint id, uint response, const QVariantMap &results);
     void thakir_prayer_times_Calculer();
     void thakir_prayer_times_Activer_toolBox1();
     void thakir_prayer_times_Activer_toolBox2();
@@ -88,6 +105,10 @@ private slots:
     void on_tabWidget_Athan_currentChanged(int index);
 
 private:
+    QDBusInterface *m_portalInterface;
+    uint m_lastNotificationId;
+    QVariantMap m_pendingActions;
+
     QAction *actTexte1;
     QAction *actTexte2;
     QAction *actTexte3;
@@ -99,6 +120,10 @@ private:
     QMessageBox msgBox;
     QMediaPlayer *athan = nullptr;
     QAudioOutput *m_audioOutput = nullptr;
+
+signals:
+    void notificationSent(bool success, const QString &error = "");
+    void actionInvoked(const QString &actionId);
 
 };
 

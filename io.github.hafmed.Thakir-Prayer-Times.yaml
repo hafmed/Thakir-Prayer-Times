@@ -1,6 +1,9 @@
+
+    # Example Flatpak manifest for a simple Qt application
     app-id: io.github.hafmed.Thakir-Prayer-Times
     runtime: org.kde.Platform
-    runtime-version: "6.9"
+    separate-locales: false
+    runtime-version: "6.9" # Or the appropriate Qt version
     sdk: org.kde.Sdk
     command: thakir_prayer_times
     finish-args:
@@ -9,15 +12,13 @@
         - --socket=wayland
         - --device=dri
         - --socket=pulseaudio
-        - --talk-name=org.freedesktop.Notifications
         - --talk-name=org.kde.StatusNotifierWatcher
     modules:
       - name: thakir_prayer_times
-        buildsystem: cmake-ninja
+        buildsystem:  cmake-ninja # Or cmake, meson, etc. depending on your build system
         sources:
-          - type: archive
-            url: https://github.com/hafmed/Thakir-Prayer-Times/archive/refs/tags/v2.0.5release3.tar.gz
-            sha256: 5f908862fde6023c6e1f39e833414f163ea2d052ec56cd0dafacb63e3d6a80e2
+          - type: dir
+            path: /home/hafmed/Downloads/Thakir-Prayer-Times-2.0.5-release9/ # Path to your application source code
 
 
 
