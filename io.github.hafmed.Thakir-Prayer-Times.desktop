@@ -7,7 +7,7 @@ Categories=Education;Utility;
 Icon=io.github.hafmed.Thakir-Prayer-Times
 Exec=thakir_prayer_times
 Terminal=false
-Keywords=prayer;times;islamic;arabe;
+Keywords=Prayer;times;Islamic;Arabe;Algeria
 
 Name[ar]=ذكر لاوقات الصلاة
 Comment[ar]=برنامج اذان بسيط
