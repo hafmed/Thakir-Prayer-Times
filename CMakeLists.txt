@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(thakir_prayer_times VERSION 0.1 LANGUAGES CXX C)
 
-set(APP_VERSION 2.0.5)
+set(APP_VERSION 2.0.7)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 

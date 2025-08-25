@@ -27,5 +27,5 @@ About::About(QWidget *parent)
                 "Build time: %5"
               "</p>"
             "</body>"
-            "</html>").arg(APP_VERSION, QT_VERSION_STR, CMP_VERSION, "25-08-2025", BLD_TIME));  ///BLD_DATE
+            "</html>").arg(APP_VERSION, QT_VERSION_STR, CMP_VERSION, "27-08-2025", BLD_TIME));  ///BLD_DATE
 }

@@ -74,23 +74,7 @@ thakir_prayer_times::thakir_prayer_times(QWidget *parent)
                 "ActionInvoked",
                 this,
                 SLOT(onNotificationResponse(uint, uint, QVariantMap)));
-
-
-
     ///--------------//
-
-    QDBusInterface portal("org.freedesktop.portal.Desktop",
-                          "/org/freedesktop/portal/desktop",
-                          "org.freedesktop.portal.Background");
-
-    QList<QString> commandline = {"thakir_prayer_times", "--hidden"};
-
-    QHash<QString, QVariant> params;
-    params.insert("reason", "Background Athan.");
-    params.insert("autostart", true);
-    params.insert("commandline", QVariant(commandline));
-
-    portal.call("RequestBackground", "", params);
 
 
     QString path ;
@@ -1243,7 +1227,7 @@ void thakir_prayer_times::thakir_prayer_times_config()
     m_radioButton_Alerte_Avant_isChecked=true;
     m_spinBox_Temps_Alerte_Avant=5;
 
-
+    m_checkBox_autostart_isChecked = true;
 }
 
 void thakir_prayer_times::readSettings()
@@ -1277,6 +1261,8 @@ void thakir_prayer_times::readSettings()
     m_radioButton_sansALERTE_isChecked=HAF_settings->value("AthanAlerte/Activation/sansALERTE").toBool();
     m_radioButton_Alerte_Avant_isChecked=HAF_settings->value("AthanAlerte/Activation/Alerte_Avant").toBool();
     m_spinBox_Temps_Alerte_Avant=HAF_settings->value("AthanAlerte/TimeAlerte/valeur").toInt();
+
+    m_checkBox_autostart_isChecked = HAF_settings->value("setting_autostart").toBool();
 
 }
 
@@ -1312,7 +1298,7 @@ void thakir_prayer_times::writeSettings()
     HAF_settings->setValue("AthanAlerte/Activation/Alerte_Avant", m_radioButton_Alerte_Avant_isChecked);
     HAF_settings->setValue("AthanAlerte/TimeAlerte/valeur", m_spinBox_Temps_Alerte_Avant);
 
-
+    HAF_settings->setValue("setting_autostart", m_checkBox_autostart_isChecked);
 
     HAF_settings->sync();
 }
@@ -1377,6 +1363,8 @@ void thakir_prayer_times::updateSettings()
     radioButton_sansALERTE->setChecked(m_radioButton_sansALERTE_isChecked);
     radioButton_Alerte_Avant->setChecked(m_radioButton_Alerte_Avant_isChecked);
     spinBox_Temps_Alerte_Avant->setValue(m_spinBox_Temps_Alerte_Avant);
+
+    checkBox_autostart->setChecked(m_checkBox_autostart_isChecked);
 }
 
 void thakir_prayer_times::closeEvent(QCloseEvent *event)
@@ -1387,8 +1375,6 @@ void thakir_prayer_times::closeEvent(QCloseEvent *event)
     event->ignore();
 
 }
-
-
 
 void thakir_prayer_times::readDataFromUI()
 {
@@ -1421,6 +1407,7 @@ void thakir_prayer_times::readDataFromUI()
     m_radioButton_Alerte_Avant_isChecked=radioButton_Alerte_Avant->isChecked();
     m_spinBox_Temps_Alerte_Avant=spinBox_Temps_Alerte_Avant->value();
 
+    m_checkBox_autostart_isChecked=checkBox_autostart->isChecked();
 
 }
 
@@ -2129,6 +2116,38 @@ void thakir_prayer_times::onNotificationResponse(uint id, uint response, const Q
         }
 
         emit actionInvoked(actionId);
+    }
+}
+
+
+void thakir_prayer_times::on_checkBox_autostart_stateChanged(int arg1)
+{
+    if (arg1==0){
+        QDBusInterface portal("org.freedesktop.portal.Desktop",
+                              "/org/freedesktop/portal/desktop",
+                              "org.freedesktop.portal.Background");
+
+        QList<QString> commandline = {"thakir_prayer_times", "--hidden"};
+
+        QHash<QString, QVariant> params;
+        params.insert("reason", "Background Athan.");
+        params.insert("autostart", false);
+        params.insert("commandline", QVariant(commandline));
+
+        portal.call("RequestBackground", "", params);
+    }else{
+        QDBusInterface portal("org.freedesktop.portal.Desktop",
+                              "/org/freedesktop/portal/desktop",
+                              "org.freedesktop.portal.Background");
+
+        QList<QString> commandline = {"thakir_prayer_times", "--hidden"};
+
+        QHash<QString, QVariant> params;
+        params.insert("reason", "Background Athan.");
+        params.insert("autostart", true);
+        params.insert("commandline", QVariant(commandline));
+
+        portal.call("RequestBackground", "", params);
     }
 }
 

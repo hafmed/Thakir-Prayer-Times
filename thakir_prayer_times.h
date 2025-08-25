@@ -57,6 +57,8 @@ public:
     bool m_radioButton_Alerte_Avant_isChecked;
     int m_spinBox_Temps_Alerte_Avant;
 
+    bool m_checkBox_autostart_isChecked;
+
     thakir_prayer_times(QWidget *parent = 0);
 
     void setVisible(bool visible);
@@ -103,6 +105,8 @@ private slots:
     void showQMessageBox(QMediaPlayer::MediaStatus status);
 
     void on_tabWidget_Athan_currentChanged(int index);
+
+    void on_checkBox_autostart_stateChanged(int arg1);
 
 private:
     QDBusInterface *m_portalInterface;
