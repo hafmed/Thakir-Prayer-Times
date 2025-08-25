@@ -2,7 +2,7 @@
 <component type="desktop-application">
     <id>io.github.hafmed.Thakir-Prayer-Times</id>
     <name>Thakir Prayer Times</name>
-    <summary>A desktop application to calculate prayer times for Algeria cities;</summary>
+    <summary>A desktop application to calculate prayer times for Algeria cities and author in the World.</summary>
     <metadata_license>CC0-1.0</metadata_license>
     <project_license>GPL-3.0-or-later</project_license>
     <supports>
@@ -25,15 +25,16 @@
     </keywords>
     <description>
         <p>
-            Thakir Prayer Times is a desktop application to calculate prayer times for Algeria cities:
+            Thakir Prayer Times is a desktop application to calculate prayer times for Algeria cities and author in the World:
         </p>
         <ul>
             <li>Accurate Prayer time calculator based on your current location;</li>
             <li>With Azan/Adhan: visual and audio notifications/calls for prayer;</li>
             <li>Quibla direction;</li>
             <li>Enable/Disable Alert before Adhan;</li>
+            <li>Enable/Disable autostart in login;</li>
             <li>Arabic GUI;</li>
-            <li>...</li>
+            <li>.....</li>
         </ul>
     </description>
     <launchable type="desktop-id">io.github.hafmed.Thakir-Prayer-Times.desktop</launchable>
