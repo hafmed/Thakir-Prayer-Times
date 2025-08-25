@@ -42,6 +42,11 @@ thakir_prayer_times::thakir_prayer_times(QWidget *parent)
 {
     setupUi(this);
 
+    if (checkBox_autostart->isChecked()){
+        on_checkBox_autostart_stateChanged(2);
+    }else{
+        on_checkBox_autostart_stateChanged(0);
+    }
 
     // Connect to the session bus
     QDBusConnection bus = QDBusConnection::sessionBus();
