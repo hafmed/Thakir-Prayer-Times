@@ -59,7 +59,7 @@
     </size>
    </property>
    <property name="pixmap">
-    <pixmap resource="qtresource.qrc">:/icons/thakir_prayer_times.ico</pixmap>
+    <pixmap>:/icons/thakir_prayer_times.ico</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -142,7 +142,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; color:#ffffff;&quot;&gt;هذا البرنامج من تصميم : محمد حفيان &lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; color:#5bb14e;&quot;&gt;(الجزائر)&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;\&amp;quot;mailto:thakir.dz@gmail.com?subject&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#27bf73;&quot;&gt;thakir.dz@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;mailto:thakir.dz@gmail.com?subject=About%20Thakir%20Prayer%20Times%20(Ver: 2.0.7)%20; On Linux&quot; text-decoration: underline; color:#27bf73;&quot;&gt;thakir.dz@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p align=&quot;right&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot;&gt;هذا البرنامج يوزع مجانا في أمل أن يكون نافعا بإذن الله&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;right&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot;&gt;لكنه غير مصحوب بأية ضمانة، &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; text-decoration: underline; color:#43ca4c;&quot;&gt;لا تنسونا من صالح دعائكم&lt;/span&gt;&lt;/p&gt;

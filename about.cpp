@@ -6,7 +6,7 @@ HAFIANE Mohamed
 #include "constants.h"
 #include "version.h"
 #include <QDialog>
-
+#include <QDesktopServices>
 
 About::About(QWidget *parent)
     : QDialog(parent)
@@ -29,3 +29,9 @@ About::About(QWidget *parent)
             "</body>"
             "</html>").arg(APP_VERSION, QT_VERSION_STR, CMP_VERSION, "27-08-2025", BLD_TIME));  ///BLD_DATE
 }
+
+void About::on_textBrowser_about_anchorClicked(const QUrl &arg1)
+{
+    QDesktopServices::openUrl(arg1);
+}
+

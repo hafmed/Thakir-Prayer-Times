@@ -15,6 +15,9 @@ class About : public QDialog
 public:
     About(QWidget *parent = 0);
 
+private slots:
+    void on_textBrowser_about_anchorClicked(const QUrl &arg1);
+
 private:
     Ui::AboutClass ui;
 };
